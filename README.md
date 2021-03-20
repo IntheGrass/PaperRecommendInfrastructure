@@ -1,2 +1,61 @@
-# PaperRecommendInfrastructure
-è®ºæ–‡æ¨èçš„åŸºç¡€æ¶æ„ï¼Œä¸»è¦åŒ…å«å¯¹æ•°æ®é›†çš„é¢„å¤„ç†ï¼Œç”¨äºå¡«å……æ ¸å¿ƒçš„è®ºæ–‡æ¨èä»£ç 
+# ÂÛÎÄÍÆ¼ö»ù´¡¼Ü¹¹
+
+## ¼ò½é
+
+ÂÛÎÄÍÆ¼öµÄ»ù´¡¼Ü¹¹£¬Ö÷Òª°üº¬¶ÔÊı¾İ¼¯µÄÔ¤´¦Àí£¬ÓÃÓÚÌî³äºËĞÄµÄÂÛÎÄÍÆ¼ö´úÂë
+
+## ÎÄ¼ş½á¹¹
+
+```python
+©¦  .gitignore
+©¦  main.py
+©¦  organization.txt
+©¦  README.md
+©¦  ÈÕÖ¾.md
+©¦          
+©À©¤data
+©¦  ©À©¤basicData  # ´ÓAANÂÛÎÄ¼¯¸´ÖÆ¹ıÀ´µÄÔ­Ê¼Êı¾İ¼¯
+©¦  ©¦      acl-metadata-utf8.txt
+©¦  ©¦      acl.txt
+©¦  ©¦      author-collaboration-network.txt
+©¦  ©¦      paper_ids.txt
+©¦  ©¦      
+©¦  ©¸©¤formatData # ½«AANµÄÔ­Ê¼Êı¾İ¼¯½øĞĞÌáÁ¶¡¢»®·Ö£¬µÃµ½¸üÒ×¶ÁÈ¡µÄÊı¾İ¼¯£¬
+©¦          collaboration_authors_list.txt
+©¦          test_paper_citation.txt
+©¦          test_paper_ids.txt
+©¦          train_paper_citation.txt
+©¦          train_paper_ids.txt
+©¦          
+©À©¤dataFormatter	# ½«AANÔ­Ê¼Êı¾İ½øĞĞ¸ñÊ½»¯µÄ°ü,°üº¬ÈçÏÂ²Ù×÷£ºÑµÁ·/²âÊÔ¼¯»®·Ö¡¢¾«Á¶Êı¾İ
+©¦  ©¦  authorFormatter.py	
+©¦  ©¦  formatter.py	# Ö´ĞĞÎÄ¼ş
+©¦  ©¦  paperFormatter.py
+©¦  ©¦  __init__.py
+©¦          
+©À©¤dataReader	# ¶ÁÈ¡Êı¾İ°ü£¬Ö÷ÒªÊÇ´Ódata/formatData/ÖĞ¶ÁÈ¡£¬²¿·ÖÖ±½Ó´ÓbasicData¶ÁÈ¡
+©¦  ©¦  authorReader.py
+©¦  ©¦  localReader.py # µ÷ÓÃºóÖ±½Ó»ñµÃ¶ÁÈ¡ºóµÄÊı¾İ£¬ÈçÂÛÎÄidÁĞ±í¡¢×÷ÕßÁĞ±í¡¢ÂÛÎÄÒıÓÃ¹ØÏµµÈ
+©¦  ©¦  metaReader.py
+©¦  ©¦  paperReader.py
+©¦  ©¦  reader.py
+©¦  ©¦  __init__.py
+©¦          
+©À©¤paperRecommend # ÂÛÎÄÍÆ¼öµÄÊµÏÖ£¬ĞèÒªÌí¼ÓµÄµØ·½
+©¦  ©¦  main.py
+©¦  ©¦  preprocess.py	#	Êı¾İ¼¯µÄÔ¤´¦Àí°ü£¬Ö÷Òª¹¦ÄÜÊÇ¸ù¾İdataReaderµÄÊı¾İÀ´»ñµÃ¶ÔÓ¦µÄ¾ØÕó
+©¦  ©¦  test.py
+©¦  ©¦  util.py
+©¦  ©¦  __init__.py
+©¦          
+©¸©¤topicModel	# Ö÷Ìâ½¨Ä££¬°üº¬gensimÊµÏÖµÄÖ÷Ìâ½¨Ä£
+        cache.py
+        textReader.py
+        __init__.py
+```
+
+## µ±Ç°ÈÎÎñ
+
+- [ ] Ê¹ÓÃ`gensim`¿âÑµÁ·LDAÖ÷ÌâÄ£ĞÍ
+- [ ] ½«Ö÷ÌâÄ£ĞÍÓ¦ÓÃµ½ÂÛÎÄÍÆ¼öÖĞÈ¥
+

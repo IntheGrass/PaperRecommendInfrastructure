@@ -16,6 +16,7 @@ meta_path = "../../UnifiedGraph/data/2014/acl-metadata-utf8.txt"  # 论文元数
 cur_dir = os.path.split(__file__)[0]
 
 
+#  用于计算绝对路径
 def get_target_path(path):
     return os.path.join(cur_dir, path)
 

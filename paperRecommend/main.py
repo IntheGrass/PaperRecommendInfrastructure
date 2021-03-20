@@ -2,7 +2,6 @@ from dataReader import localReader as data
 import preprocess
 import util
 
-def
 
 if __name__ == "__main__":
     PP = preprocess.selfRelationToMatrix(data.train_paper_citation_list, data.train_paper_dict) # 获取
