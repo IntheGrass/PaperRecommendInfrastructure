@@ -4,9 +4,8 @@
 
 
 def dump_topic_model(path):
-    pass
+    return
 
 
 def load_topic_model(path):
     pass
-
