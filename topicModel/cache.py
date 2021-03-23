@@ -3,8 +3,9 @@
 """
 
 
-def dump_topic_model(path):
-    return
+def dump_topic_model(model, path):
+    model.save('path')
+    pass
 
 
 def load_topic_model(path):

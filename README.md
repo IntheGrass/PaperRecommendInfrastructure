@@ -42,16 +42,17 @@
 │  │  __init__.py
 │          
 ├─paperRecommend # 论文推荐的实现，需要添加的地方
-│  │  main.py
+│  │  main.py	# 论文推荐的实现部分，(未完成)
 │  │  preprocess.py	#	数据集的预处理包，主要功能是根据dataReader的数据来获得对应的矩阵
-│  │  test.py
 │  │  util.py
 │  │  __init__.py
 │          
-└─topicModel	# 主题建模，包含gensim实现的主题建模
-        cache.py
-        textReader.py
-        __init__.py
+└─topicModel	# 主题建模，包含使用gensim实现的一个简单的主题建模
+│  │  cache.py	
+│  │  textReader.py	#	包含读取文本数据的方法
+│  │  main.py  # 训练了一个简单的LDA模型
+│  │  trainer.py  # 包含一个
+│  │  __init__.py    
 ```
 
 ## 当前任务

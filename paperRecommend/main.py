@@ -36,15 +36,15 @@ def general_RWR(matrix, query, a=0, max_iteration=1000, is_print=False):
     return scores[:, 0]  # 转为行向量
 
 
-def get
-
 if __name__ == "__main__":
-    # PP = preprocess.selfRelationToMatrix(data.train_paper_citation_list, data.train_paper_dict)  # 获取
-    # AA = preprocess.selfRelationToMatrix(data.author_collaboration_list, data.authors_dict, symmetric=True)
-    # PA, AP = preprocess.paper_connect_author(data.papers_meta_dict, data.train_paper_list, data.train_paper_list)
-    # test_citation_dict = preprocess.get_test_citation_dict(data.test_paper_citation_list)
+    PP = preprocess.selfRelationToMatrix(data.train_paper_citation_list, data.train_paper_dict)  # 获取
+    AA = preprocess.selfRelationToMatrix(data.author_collaboration_list, data.authors_dict, symmetric=True)
+    PA, AP = preprocess.paper_connect_author(data.papers_meta_dict, data.train_paper_list, data.train_paper_list)
+    test_citation_dict = preprocess.get_test_citation_dict(data.test_paper_citation_list)
+    # 读取主题模型
     topic_model = LdaModel.load('../../test/abstract_lad_model.data')
-    abstract_corpus = pickle.load('../../test/abstract_corpus.data')
+    with open('../../test/abstract_corpus.data') as f:
+        abstract_corpus = pickle.load('../../test/abstract_corpus.data')
     word_dictionary = corpora.Dictionary.load('../../test/abstract_dictionary.data')
     abstract_bow_corpus = [word_dictionary.doc2bow(text) for text in abstract_corpus]
 
