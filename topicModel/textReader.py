@@ -73,6 +73,8 @@ def get_paper_text(filePath):
 
 
 def get_paper_path(target_dir):
+    paper_paths = []
+    paper_ids = []
     for root, dirs, files in os.walk(target_dir):
         paper_paths = [os.path.join(root, file) for file in files if
                        re.match(r'^[A-Z]\d{2}-\d{4}(\.txt)$', file) is not None]

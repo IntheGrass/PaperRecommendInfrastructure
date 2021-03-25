@@ -3,8 +3,9 @@
 """
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
+from nltk.stem import SnowballStemmer
 
-######################预处理模块############################
+######################文本预处理模块############################
 
 """
     >功能: 对语料库进行分词，并删除停用词，将每个文本转化为分词列表
@@ -17,17 +18,58 @@ from nltk.tokenize import RegexpTokenizer
 
 def participle(documents):
     corpus = []
-    tokenizer = RegexpTokenizer(r'\w{2,}')
+    tokenizer = RegexpTokenizer(r'[a-zA-z\']{3,}')
     count = 0
     for text in documents:
-        words = tokenizer.tokenize(text)  # 分词，同时过滤掉标点符号与单个字符的词
+        words = tokenizer.tokenize(text)  # 分词，同时过滤掉标点符号(不包含单引号)、数字与少于两个个字符的词
         # 获取删除停用词后的分词表
-        filtered_words = [word for word in words if word not in stopwords.words('english')]
+        filtered_words = [word for word in words if word.lower() not in stopwords.words('english')]
+        # 词干提取
+        filtered_words = stemming(filtered_words)
         corpus.append(filtered_words)
         count += 1
         if count % 100 == 0:
             print(f'current {count}/{len(documents)}')
     return corpus
+
+
+"""
+    >介绍: 过滤掉语料库中低词频的词
+    >参数:
+        @corpus: 原语料库
+        @min_frequency: 最小词频，小于此词频的将会被过滤掉
+    >返回值:
+        @filtered_corpus: 过滤低词频词的语料库
+"""
+
+
+def filter_words_by_frequency(corpus, min_frequency):
+    count_dict = {}
+    for words in corpus:
+        for word in words:
+            if word in count_dict.keys():
+                count_dict[word] += 1
+            else:
+                count_dict[word] = 1
+    filtered_corpus = []
+    for words in corpus:
+        filtered_corpus.append([word for word in words if count_dict[word] >= min_frequency])
+    return filtered_corpus
+
+
+"""
+    >介绍: 词干提取，给定一个词列表，将所有词转化为词的原型（伪）
+    >参数:
+        @words: 词列表
+    >返回值:
+        @stemming_words: 词干提取后的词列表
+"""
+
+
+def stemming(words):
+    snowball_stemmer = SnowballStemmer('english')
+    stemming_words = [snowball_stemmer.stem(word) for word in words]
+    return stemming_words
 
 
 """
@@ -50,13 +92,11 @@ def get_paper_topic_dict(paper_ids, paper_bow, topic_model):
 
 
 """
-    （未完成）
     >介绍：根据模型获得主题与词的关系矩阵
+    >返回值:
+        topics-words的关系矩阵
 """
 
 
 def topic_word_matrix(topic_model):
-    num_topics = topic_model.num_topics
-    for i in range(0, num_topics):
-        words_distribution = topic_model.show_topic(i, topn=20)  # 主题的词分布
-    pass
+    return topic_model.get_topics()
